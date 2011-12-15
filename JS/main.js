@@ -115,7 +115,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	function getData() {
 		toggleControls("on");
 		if (localStorage.length === 0){
-			alert("There is no data in local storage.");
+			autoFillData();
+			alert("There is no data in local storage, default data added.");
 		};
 		var makeDiv = document.createElement("div");
 		makeDiv.setAttribute("id", "items");
@@ -132,6 +133,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			var obj = JSON.parse(value);
 			var makeSubList = document.createElement("ul");
 			makeLi.appendChild(makeSubList);
+			getImage(obj.pType[1], makeSubList);
 			for (var n in obj){
 				var makeSubLi = document.createElement("li");
 				makeSubList.appendChild(makeSubLi);
@@ -143,6 +145,61 @@ window.addEventListener("DOMContentLoaded", function(){
 		};
 	};
 	
+	function getImage(imgName, makeSubList) {
+		var imageLi = document.createElement("li");
+		makeSubList.appendChild(imageLi);
+		var newImg = document.createElement("img");
+		var setSrc = newImg.setAttribute("src", "image/" + imgName + ".png");
+		imageLi.appendChild(newImg);
+	};
+	
+		
+	// JSON Object - Auto populate local storage
+	
+	function autoFillData() {
+		var json = {
+			"pType1": {
+				"pType": 	["Project Type: ", "Site Development"],
+				"pName": 	["Project Name: ", "New Site Project"],
+				"pNum": 	["Project Number: ", "1234501"],
+				"dName": 	["Designer Name: ", "Me"],
+				"dateComp": ["Completion Date: ", "2011-01-01"],
+				"dwg": 		["Drawings: ", "Plans"],
+				"dComt": 	["Drawings Comments: ", "none"],
+				"work3d": 	["3D Work: ", "All"],
+				"wComt": 	["3D Work Comments: ", "none"],
+				"rend": 	["Renderings: ", "5"]
+			},
+			"pType2": {
+				"pType": 	["Project Type: ", "Building Envelope"],
+				"pName": 	["Project Name: ", "New Envelope Project"],
+				"pNum": 	["Project Number: ", "1234502"],
+				"dName": 	["Designer Name: ", "Me"],
+				"dateComp": ["Completion Date: ", "2011-01-01"],
+				"dwg": 		["Drawings: ", "Elevations"],
+				"dComt": 	["Drawings Comments: ", "none"],
+				"work3d": 	["3D Work: ", "All"],
+				"wComt": 	["3D Work Comments: ", "none"],
+				"rend": 	["Renderings: ", "2"]
+			},
+			"pType3": {
+				"pType": 	["Project Type: ", "Interior Design"],
+				"pName": 	["Project Name: ", "New Interior Project"],
+				"pNum": 	["Project Number: ", "1234503"],
+				"dName": 	["Designer Name: ", "Me"],
+				"dateComp": ["Completion Date: ", "2011-01-01"],
+				"dwg": 		["Drawings: ", "Sections"],
+				"dComt": 	["Drawings Comments: ", "none"],
+				"work3d": 	["3D Work: ", "All"],
+				"wComt": 	["3D Work Comments: ", "none"],
+				"rend": 	["Renderings: ", "10"]
+			}	
+		}
+		for(var n in json){
+			var id = Math.floor(Math.random()*10000001);
+			localStorage.setItem(id, JSON.stringify(json[n]));
+		};
+	};
 	
 	// Make Item Links
 	
