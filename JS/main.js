@@ -13,6 +13,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		return theElement;
 	};
 	
+	
 	// Field Elements
 	
 	// Select Field for Project Type.
@@ -31,6 +32,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		selectLi.appendChild(makeSelect);
 	};
 	
+	
 	//Value of selected radio button.
 	
 	function getSelectedRadio() {
@@ -42,13 +44,10 @@ window.addEventListener("DOMContentLoaded", function(){
 		 };
 	};
 	
-//  I wasn't able to translated your suggestions from the e-mail to the actual code.
-//	I have to be honest and tell you that I barely pass SDI. I even had to take it twice.
-//  I haven't being able to grasp the logic of the language. Is easy to follow the videos but when I do things on my own they never work.
 	
 	function getCheckboxValue() {
 		var checkboxes = document.forms[0].drawings;
-//		var valueAry = [];
+//		var valueAry[];
 			for (var i=0; i<checkboxes.length; i++) {
 				if (checkboxes[i].checked){
 					dwgValue = 	checkboxes[i].value;
@@ -110,6 +109,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		alert("Project Stored!");
 	};
 	
+	
 	// Display Data
 	
 	function getData() {
@@ -144,6 +144,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			makeItemLinks (localStorage.key(i), linksLi);
 		};
 	};
+	
 	
 	function getImage(imgName, makeSubList) {
 		var imageLi = document.createElement("li");
@@ -201,6 +202,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		};
 	};
 	
+	
 	// Make Item Links
 	
 	function makeItemLinks(key, linksLi) {
@@ -225,6 +227,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		
 	};
 	
+	
 	// Edit an item 
 	
 	function editItem() {
@@ -240,14 +243,14 @@ window.addEventListener("DOMContentLoaded", function(){
 		$("dateComp").value = item.dateComp[1];
 		
 		
-//		var checkboxes = document.forms[0].drawings;
-//		for (var i=0; i<checkboxes.length; i++){
-//			if (checkboxes [i].value == ){
-//				checkboxes [i].setAttribute("checked", "checked");
-//			}else if (checkboxes [i].value == ) {
-//				checkboxes [i].setAttribute("checked", "checked");
-//			}
-//		};
+		var checkboxes = document.forms[0].drawings;
+		for (var i=0; i<checkboxes.length; i++){
+			if (checkboxes[i].value == ){
+				checkboxes[i].setAttribute("checked", "checked");
+			}else if (checkboxes[i].value == ) {
+				checkboxes[i].setAttribute("checked", "checked");
+			}
+		};
 		
 		$("dComments").value = item.dComt[1];
 		
